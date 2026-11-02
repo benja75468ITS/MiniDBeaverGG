@@ -8,3 +8,5 @@ src/main/resources/db.properties
 
 # Optional local SSH login autofill; never commit personal/server credentials.
 /ssh.properties
+
+.DS_Store
