@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Pantalla de inicio: JavaFX inyecta sus controles en LoginController. -->
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.its5a.controller.LoginController"
+      alignment="CENTER" styleClass="app-container">
+    <padding>
+        <Insets top="32" right="32" bottom="32" left="32"/>
+    </padding>
+
+    <VBox spacing="18" prefWidth="380" maxWidth="400" styleClass="card-panel">
+        <padding>
+            <Insets top="32" right="28" bottom="32" left="28"/>
+        </padding>
+
+        <!-- Encabezado e identidad de la aplicación. -->
+        <VBox spacing="6" alignment="CENTER">
+            <HBox styleClass="badge-neutral" alignment="CENTER">
+                <Label text="MINI DBEAVER • TÚNEL SSH" styleClass="badge-neutral-text"/>
+            </HBox>
+            <Label text="MariaDB a SQLite" styleClass="title-hero"/>
+            <Label text="Conexión remota y CRUD local" styleClass="title-sub"/>
+        </VBox>
+
+        <!-- Campos de acceso SSH. -->
+        <VBox spacing="12">
+            <VBox spacing="4">
+                <Label text="HOST DEL SERVIDOR" styleClass="section-label"/>
+                <TextField fx:id="hostField" promptText="fi.jcaguilar.dev"/>
+            </VBox>
+
+            <VBox spacing="4">
+                <Label text="USUARIO SSH" styleClass="section-label"/>
+                <TextField fx:id="userField" promptText="Usuario"/>
+            </VBox>
+
+            <VBox spacing="4">
+                <Label text="CONTRASEÑA SSH" styleClass="section-label"/>
+                <PasswordField fx:id="passField" promptText="Contraseña" onAction="#onLogin"/>
+            </VBox>
+        </VBox>
+
+        <!-- Carga credenciales opcionales desde el archivo local ssh.properties. -->
+        <HBox alignment="CENTER">
+            <Button text="Autocompletar credenciales guardadas" styleClass="btn-link" onAction="#onFillCredentials"/>
+        </HBox>
+
+        <!-- Acciones disponibles en el inicio de sesión. -->
+        <VBox spacing="10">
+            <Button fx:id="loginButton" text="Conectar vía SSH" styleClass="btn-primary"
+                    defaultButton="true" maxWidth="Infinity" onAction="#onLogin"/>
+        </VBox>
+
+        <!-- Indicador de progreso y mensajes de estado/error. -->
+        <VBox spacing="6" alignment="CENTER">
+            <ProgressIndicator fx:id="progress" visible="false" prefWidth="20" prefHeight="20"/>
+            <Label fx:id="statusLabel" wrapText="true" alignment="CENTER" textAlignment="CENTER"
+                   styleClass="label-muted"/>
+        </VBox>
+    </VBox>
+</VBox>

@@ -1,0 +1,6 @@
+# Copy this file to db.properties and replace every value with your authorized settings.
+# Do not commit db.properties: it contains private MariaDB credentials.
+db.name=its5a
+db.user=CAMBIAR_USUARIO_MARIADB
+db.password=CAMBIAR_CONTRASENA_MARIADB
+db.remotePort=3306

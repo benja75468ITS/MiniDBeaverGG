@@ -1,0 +1,10 @@
+target/
+local.db
+.idea/
+*.iml
+
+# Local database credentials; keep db.properties.example as the safe template.
+src/main/resources/db.properties
+
+# Optional local SSH login autofill; never commit personal/server credentials.
+/ssh.properties

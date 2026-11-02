@@ -1,0 +1,14 @@
+{
+    "java.jdt.ls.java.home": "/Users/vdj/.jdks/temurin-21.0.13/Contents/Home",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-21",
+            "path": "/Users/vdj/.jdks/temurin-21.0.13/Contents/Home",
+            "default": true
+        },
+        {
+            "name": "JavaSE-1.8",
+            "path": "/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home"
+        }
+    ]
+}

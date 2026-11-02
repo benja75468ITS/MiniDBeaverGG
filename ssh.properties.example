@@ -1,0 +1,5 @@
+# Copy this file to ssh.properties to enable the login autofill button.
+# Keep ssh.properties private; it is excluded from Git.
+ssh.host=fi.jcaguilar.dev
+ssh.user=CAMBIAR_USUARIO_SSH
+ssh.password=CAMBIAR_CONTRASENA_SSH

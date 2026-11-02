@@ -1,0 +1,375 @@
+/* Shared JavaFX theme: warm monochrome surfaces, clear dividers and muted semantic accents. */
+
+.root {
+    -fx-font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #FBFBFA;
+    -fx-text-fill: #111111;
+}
+
+/* Application canvas and panel surfaces. */
+.app-container {
+    -fx-background-color: #FBFBFA;
+}
+
+.card-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8px;
+    -fx-border-color: #EAEAEA;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.03), 10, 0, 0, 2);
+}
+
+.sidebar-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #EAEAEA;
+    -fx-border-width: 0 1px 0 0;
+}
+
+.top-bar {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #EAEAEA;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.bottom-bar {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #EAEAEA;
+    -fx-border-width: 1px 0 0 0;
+}
+
+/* Typography and text hierarchy. */
+.title-hero {
+    -fx-font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #111111;
+}
+
+.title-sub {
+    -fx-font-size: 12px;
+    -fx-text-fill: #787774;
+}
+
+.section-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #787774;
+}
+
+.label-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #111111;
+}
+
+.label-muted {
+    -fx-font-size: 12px;
+    -fx-text-fill: #787774;
+}
+
+/* Neutral, connection-state and informational badges. */
+.badge-neutral {
+    -fx-background-color: #F7F6F3;
+    -fx-border-color: #EAEAEA;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-padding: 3 8 3 8;
+}
+
+.badge-neutral-text {
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #5A5A58;
+}
+
+.badge-green {
+    -fx-background-color: #EDF3EC;
+    -fx-border-color: #D3E5D1;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-padding: 3 8 3 8;
+}
+
+.badge-green-text {
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #346538;
+}
+
+.badge-blue {
+    -fx-background-color: #E1F3FE;
+    -fx-border-color: #C3E5FD;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-padding: 3 8 3 8;
+}
+
+.badge-blue-text {
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #1F6C9F;
+}
+
+.status-dot-active {
+    -fx-background-color: #346538;
+    -fx-background-radius: 4px;
+    -fx-pref-width: 6px;
+    -fx-pref-height: 6px;
+}
+
+/* Text and password inputs, including their focus state. */
+.text-field, .password-field {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 6px;
+    -fx-border-color: #E0E0DE;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-text-fill: #111111;
+    -fx-prompt-text-fill: #9B9A97;
+    -fx-padding: 10 12 10 12;
+    -fx-font-size: 13px;
+    -fx-highlight-fill: #111111;
+    -fx-highlight-text-fill: #FFFFFF;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #111111;
+    -fx-border-width: 1px;
+    -fx-effect: none;
+}
+
+/* Shared button geometry and interaction states. */
+.button {
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-font-weight: 600;
+    -fx-font-size: 13px;
+    -fx-padding: 9 16 9 16;
+    -fx-cursor: hand;
+}
+
+/* Primary action button. */
+.btn-primary {
+    -fx-background-color: #111111;
+    -fx-border-color: #111111;
+    -fx-border-width: 1px;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: none;
+}
+.btn-primary:hover {
+    -fx-background-color: #2F3437;
+    -fx-border-color: #2F3437;
+}
+.btn-primary:pressed {
+    -fx-background-color: #000000;
+}
+
+/* Secondary, non-destructive action button. */
+.btn-secondary {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E0E0DE;
+    -fx-border-width: 1px;
+    -fx-text-fill: #111111;
+}
+.btn-secondary:hover {
+    -fx-background-color: #F7F6F3;
+    -fx-border-color: #D3D3D0;
+}
+.btn-secondary:pressed {
+    -fx-background-color: #EFEFEA;
+}
+
+/* Destructive action button. */
+.btn-danger {
+    -fx-background-color: #FDEBEC;
+    -fx-border-color: #F7D4D6;
+    -fx-border-width: 1px;
+    -fx-text-fill: #9F2F2D;
+}
+.btn-danger:hover {
+    -fx-background-color: #F9D8DA;
+    -fx-border-color: #F0B8BB;
+}
+.btn-danger:pressed {
+    -fx-background-color: #F5C6C9;
+}
+
+/* Low-emphasis link-style action. */
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #1F6C9F;
+    -fx-font-size: 12px;
+    -fx-font-weight: 500;
+    -fx-padding: 4 8;
+    -fx-cursor: hand;
+}
+.btn-link:hover {
+    -fx-text-fill: #11507A;
+    -fx-underline: true;
+}
+
+/* Local table selector and its popup list. */
+.combo-box {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 6px;
+    -fx-border-color: #E0E0DE;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-padding: 3 8 3 8;
+}
+.combo-box .list-cell {
+    -fx-text-fill: #111111;
+    -fx-font-size: 13px;
+    -fx-background-color: transparent;
+}
+.combo-box:hover {
+    -fx-border-color: #BDBDB9;
+}
+.combo-box:focused {
+    -fx-border-color: #111111;
+}
+.combo-box-popup .list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 6px;
+    -fx-border-color: #E0E0DE;
+    -fx-border-radius: 6px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 8, 0, 0, 4);
+}
+.combo-box-popup .list-cell {
+    -fx-text-fill: #111111;
+    -fx-padding: 8 12;
+}
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #F7F6F3;
+}
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #111111;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Remote table list in the explorer sidebar. */
+.list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 6px;
+    -fx-border-color: #EAEAEA;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-padding: 4;
+}
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #2F3437;
+    -fx-font-size: 13px;
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 4px;
+}
+.list-cell:filled:hover {
+    -fx-background-color: #F7F6F3;
+    -fx-text-fill: #111111;
+    -fx-cursor: hand;
+}
+.list-cell:filled:selected {
+    -fx-background-color: #111111;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 600;
+}
+
+/* Local SQLite records grid, headers, rows and selected state. */
+.table-view {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 6px;
+    -fx-border-color: #EAEAEA;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+}
+.table-view .column-header-background {
+    -fx-background-color: #FBFBFA;
+    -fx-background-radius: 6px 6px 0 0;
+    -fx-border-color: #EAEAEA;
+    -fx-border-width: 0 0 1px 0;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: #EAEAEA;
+    -fx-border-width: 0 1px 0 0;
+    -fx-padding: 10 14 10 14;
+}
+.table-view .column-header .label {
+    -fx-text-fill: #5A5A58;
+    -fx-font-weight: 700;
+    -fx-font-size: 11px;
+}
+.table-view .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #F0F0EF;
+    -fx-border-width: 0 0 1px 0;
+}
+.table-view .table-row-cell:odd {
+    -fx-background-color: #FAFAF9;
+}
+.table-view .table-row-cell:hover {
+    -fx-background-color: #F4F4F2;
+    -fx-cursor: hand;
+}
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #E1F3FE;
+}
+.table-view .table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: #1F6C9F;
+}
+.table-view .table-cell {
+    -fx-text-fill: #2F3437;
+    -fx-font-size: 13px;
+    -fx-padding: 9 14 9 14;
+    -fx-alignment: CENTER-LEFT;
+}
+
+/* Subtle scrollbars for lists, grids and long forms. */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+.scroll-bar .thumb {
+    -fx-background-color: #D3D3D0;
+    -fx-background-radius: 4px;
+}
+.scroll-bar .thumb:hover {
+    -fx-background-color: #BDBDB9;
+}
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}
+
+/* Shared appearance for alerts and record-entry dialogs. */
+.dialog-pane {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #EAEAEA;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+.dialog-pane > .button-bar > .container {
+    -fx-background-color: #FBFBFA;
+    -fx-border-color: #EAEAEA;
+    -fx-border-width: 1px 0 0 0;
+    -fx-padding: 12 16;
+}
+.dialog-pane .header-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #EAEAEA;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 16;
+}
+.dialog-pane .label {
+    -fx-text-fill: #111111;
+}

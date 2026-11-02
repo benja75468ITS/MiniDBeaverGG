@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+
+<!-- Main database explorer: remote table download on the left, local SQLite CRUD in the center. -->
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.its5a.controller.MainController"
+            styleClass="app-container" prefWidth="1120" prefHeight="700">
+
+    <!-- Top navigation: application identity, connection status and session actions. -->
+    <top>
+        <HBox spacing="16" alignment="CENTER_LEFT" styleClass="top-bar">
+            <padding>
+                <Insets top="14" right="24" bottom="14" left="24"/>
+            </padding>
+
+            <!-- Identidad y nombre del explorador. -->
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <HBox styleClass="badge-neutral" alignment="CENTER">
+                    <Label text="MINI DBEAVER" styleClass="badge-neutral-text"/>
+                </HBox>
+                <VBox spacing="1">
+                    <Label text="Explorador de bases de datos" styleClass="label-title"/>
+                    <Label text="MariaDB por SSH a SQLite" styleClass="title-sub"/>
+                </VBox>
+            </HBox>
+
+            <Separator orientation="VERTICAL" style="-fx-padding: 0 4;"/>
+
+            <!-- Estado actual de la conexión. -->
+            <HBox fx:id="statusBadgeBox" spacing="8" alignment="CENTER_LEFT" styleClass="badge-green">
+                <Region fx:id="statusDot" styleClass="status-dot-active"/>
+                <Label fx:id="connectionBadge" text="Conectando..." styleClass="badge-green-text"/>
+            </HBox>
+
+            <!-- Espacio flexible para separar las acciones de sesión. -->
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Acciones de equipo y cierre de sesión. -->
+            <HBox spacing="8" alignment="CENTER_RIGHT">
+                <Button text="Integrantes" styleClass="btn-secondary" onAction="#onShowTeam"/>
+                <Button text="Desconectar" styleClass="btn-secondary" onAction="#onLogout"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Left sidebar: tables exposed by the remote MariaDB schema. -->
+    <left>
+        <VBox spacing="12" prefWidth="270" styleClass="sidebar-panel">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- Título y cantidad de tablas remotas. -->
+            <VBox spacing="2">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="TABLAS REMOTAS" styleClass="section-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="remoteCountLabel" text="0" styleClass="title-sub" style="-fx-font-weight: 700;"/>
+                </HBox>
+                <Label text="Esquema MariaDB (its5a)" styleClass="title-sub"/>
+            </VBox>
+
+            <!-- Lista de tablas disponibles en MariaDB. -->
+            <ListView fx:id="remoteList" VBox.vgrow="ALWAYS"/>
+
+            <!-- Descarga la selección al archivo SQLite local. -->
+            <Button fx:id="downloadButton" text="Descargar a SQLite" styleClass="btn-primary"
+                    maxWidth="Infinity" onAction="#onDownload"/>
+
+            <!-- Nota sobre la ubicación y el propósito de la base local. -->
+            <VBox spacing="4" style="-fx-background-color: #F7F6F3; -fx-background-radius: 6px; -fx-padding: 10 12; -fx-border-color: #EAEAEA; -fx-border-radius: 6px; -fx-border-width: 1px;">
+                <Label text="Base de datos local" styleClass="section-label"/>
+                <Label text="Las tablas descargadas se almacenan en el archivo local.db mediante SQLite."
+                       wrapText="true" style="-fx-font-size: 11px; -fx-text-fill: #787774;"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Center workspace: selected local table, row operations and data grid. -->
+    <center>
+        <VBox spacing="14" style="-fx-background-color: #FBFBFA;">
+            <padding>
+                <Insets top="20" right="24" bottom="16" left="24"/>
+            </padding>
+
+            <!-- Toolbar: table selection and actions that operate only on local SQLite data. -->
+            <VBox spacing="10" styleClass="card-panel">
+                <padding>
+                    <Insets top="10" right="16" bottom="10" left="16"/>
+                </padding>
+
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Tabla local:" styleClass="label-title" style="-fx-font-size: 13px;"/>
+                    <ComboBox fx:id="localCombo" prefWidth="180" promptText="Seleccionar tabla..."/>
+                    <HBox fx:id="tableStatsBox" styleClass="badge-neutral" alignment="CENTER">
+                        <Label fx:id="tableInfoBadge" text="Sin tabla activa" styleClass="badge-neutral-text"/>
+                    </HBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Button fx:id="createTableButton" text="Crear tabla" styleClass="btn-secondary"
+                            onAction="#onCreateTable"/>
+                    <Button fx:id="editStructureButton" text="Editar estructura" styleClass="btn-secondary"
+                            onAction="#onEditStructure" disable="true"/>
+                    <Button fx:id="deleteTableButton" text="Eliminar tabla" styleClass="btn-danger"
+                            onAction="#onDeleteTable" disable="true"/>
+                </HBox>
+
+                <HBox spacing="8" alignment="CENTER_RIGHT">
+                    <Button fx:id="insertButton" text="Insertar registro" styleClass="btn-secondary" onAction="#onInsert"/>
+                    <Button fx:id="editButton" text="Editar" styleClass="btn-secondary" onAction="#onEdit"/>
+                    <Button fx:id="deleteButton" text="Eliminar" styleClass="btn-danger" onAction="#onDelete"/>
+                    <Button fx:id="refreshButton" text="Refrescar" styleClass="btn-secondary" onAction="#onRefresh"/>
+                </HBox>
+            </VBox>
+
+            <!-- Tabla que muestra los registros SQLite seleccionados. -->
+            <StackPane VBox.vgrow="ALWAYS">
+                <TableView fx:id="table">
+                    <!-- Mensaje mostrado cuando la tabla todavía no tiene registros. -->
+                    <placeholder>
+                        <VBox alignment="CENTER" spacing="8">
+                            <Label text="No hay registros para mostrar" styleClass="label-title"/>
+                            <Label text="Descarga una tabla remota o crea una tabla local para comenzar."
+                                   styleClass="title-sub"/>
+                        </VBox>
+                    </placeholder>
+                </TableView>
+            </StackPane>
+        </VBox>
+    </center>
+
+    <!-- Status bar: operation feedback and local database destination. -->
+    <bottom>
+        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="bottom-bar">
+            <padding>
+                <Insets top="10" right="24" bottom="10" left="24"/>
+            </padding>
+            <Label fx:id="status" text="Listo." styleClass="title-sub" style="-fx-text-fill: #5A5A58;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Destino local: local.db (SQLite)" styleClass="title-sub" style="-fx-font-size: 11px;"/>
+        </HBox>
+    </bottom>
+</BorderPane>
